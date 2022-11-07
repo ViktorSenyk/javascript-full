@@ -20,19 +20,20 @@ const tasks = [
 //   });
 // };
 const renderTasks = (tasksList) => {
-  let list = document.querySelector('.list');
+  const list = document.querySelector('.list');
   tasksList.forEach(({ text, done }) => {
-    let item = document.createElement('li');
-    let checkBox = document.createElement('input');
+    const item = document.createElement('li');
+    const checkBox = document.createElement('input');
     checkBox.type = 'checkBox';
     checkBox.classList.add('list__item-checkbox');
     item.classList.add('list__item');
+    checkBox.onclick = function () {
+      done = !done;
+      item.classList.toggle('list__item_done');
+    };
     if (done) {
+      item.classList.add('list__item_done');
       checkBox.checked = true;
-      item.classList.add('list__item', 'list__item_done');
-    } else {
-      item.classList.add('list__item');
-      checkBox.checked = false;
     }
     item.append(checkBox, text);
     list.append(item);
