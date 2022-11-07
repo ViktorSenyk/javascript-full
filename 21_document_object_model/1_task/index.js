@@ -24,7 +24,7 @@ const renderTasks = (tasksList) => {
   tasksList.forEach(({ text, done }) => {
     const item = document.createElement('li');
     const checkBox = document.createElement('input');
-    checkBox.type = 'checkBox';
+    checkBox.type = 'checkbox';
     checkBox.classList.add('list__item-checkbox');
     item.classList.add('list__item');
     checkBox.onclick = function () {
