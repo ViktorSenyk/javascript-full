@@ -19,7 +19,7 @@ const tasks = [
 //     );
 //   });
 // };
-const renderTasks = (tasksList) => {
+const renderTasks = tasksList => {
   const list = document.querySelector('.list');
   tasksList.forEach(({ text, done }) => {
     const item = document.createElement('li');
