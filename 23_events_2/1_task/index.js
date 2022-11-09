@@ -27,6 +27,6 @@ passwordInputElem.addEventListener('input', event => {
 submitElem.addEventListener('click', event => {
   event.preventDefault();
   if (isCorrectEmail && isCorrectPasswod) {
-    console.log(Object.fromEntries(new FormData(formElem)));
+    alert(JSON.stringify(Object.fromEntries(new FormData(formElem))));
   }
 });
