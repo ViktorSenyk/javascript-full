@@ -23,5 +23,5 @@ passwordInputElem.addEventListener(
 
 formElem.addEventListener('submit', event => {
   event.preventDefault();
-  alert(Object.fromEntries(new FormData(formElem)));
+  alert(JSON.stringify(Object.fromEntries(new FormData(formElem))));
 });
