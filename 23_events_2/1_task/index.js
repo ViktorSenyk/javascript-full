@@ -7,25 +7,21 @@ const passwordErrorElem = document.querySelector('.error-text_password');
 const isRequired = value => (value ? '' : 'Required');
 const isEmail = value => (value.includes('@') ? '' : 'Should be an email');
 
-let isCorrectEmail = false;
-let isCorrectPasswod = false;
+emailInputElem.addEventListener(
+  'input',
+  event =>
+    (emailErrorElem.textContent =
+      isRequired(event.target.value) +
+      (isRequired(event.target.value) ? ', ' : '') +
+      isEmail(event.target.value)),
+);
 
-emailInputElem.addEventListener('input', event => {
-  emailErrorElem.textContent =
-    isRequired(event.target.value) +
-    (isRequired(event.target.value) ? ', ' : '') +
-    isEmail(event.target.value);
-  emailErrorElem.textContent ? (isCorrectEmail = false) : (isCorrectEmail = true);
-});
-
-passwordInputElem.addEventListener('input', event => {
-  passwordErrorElem.textContent = isRequired(event.target.value);
-  passwordErrorElem.textContent ? (isCorrectPasswod = false) : (isCorrectPasswod = true);
-});
+passwordInputElem.addEventListener(
+  'input',
+  event => (passwordErrorElem.textContent = isRequired(event.target.value)),
+);
 
 formElem.addEventListener('submit', event => {
   event.preventDefault();
-  if (isCorrectEmail && isCorrectPasswod) {
-    alert(Object.fromEntries(new FormData(formElem)));
-  }
+  alert(Object.fromEntries(new FormData(formElem)));
 });
