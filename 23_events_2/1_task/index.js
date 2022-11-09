@@ -3,7 +3,6 @@ const emailInputElem = document.querySelector('#email');
 const emailErrorElem = document.querySelector('.error-text_email');
 const passwordInputElem = document.querySelector('#password');
 const passwordErrorElem = document.querySelector('.error-text_password');
-const submitElem = document.querySelector('.submit-button');
 
 const isRequired = value => (value ? '' : 'Required');
 const isEmail = value => (value.includes('@') ? '' : 'Should be an email');
@@ -24,7 +23,7 @@ passwordInputElem.addEventListener('input', event => {
   passwordErrorElem.textContent ? (isCorrectPasswod = false) : (isCorrectPasswod = true);
 });
 
-submitElem.addEventListener('click', event => {
+formElem.addEventListener('submit', event => {
   event.preventDefault();
   if (isCorrectEmail && isCorrectPasswod) {
     alert(JSON.stringify(Object.fromEntries(new FormData(formElem))));
