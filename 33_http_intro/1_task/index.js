@@ -10,7 +10,9 @@ buttonElem.addEventListener('click', () =>
       const { avatar_url, name, location } = data;
       avatarElem.src = avatar_url;
       userNameElem.textContent = name;
-      userLocationElem.textContent = location;
+        userLocationElem.textContent = location
+            ? `from ${location}`
+            : '';
     }),
   ),
 );
