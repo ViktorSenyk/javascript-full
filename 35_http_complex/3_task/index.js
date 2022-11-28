@@ -14,7 +14,7 @@ buttonElem.addEventListener('click', () => {
     response.json()
       .then(data => {
         const { avatar_url, name, location, repos_url } = data;
-        
+
         avatarElem.src = avatar_url;
         userNameElem.textContent = name;
         userLocationElem.textContent = location ? `from ${location}` : '';
@@ -26,9 +26,16 @@ buttonElem.addEventListener('click', () => {
               spinnerElem.classList.add('spinner_hidden');
               inputElem.value = '';
             })
-            .catch(() => alert(`Failed to load data`)),
+            .catch(() => {
+              spinnerElem.classList.add('spinner_hidden');
+              alert(`Failed to load data`);
+            }
+            ),
         );
       })
-      .catch(() => alert(`Failed to load data`)),
+      .catch(() => {
+        spinnerElem.classList.add('spinner_hidden');
+        alert(`Failed to load data`);
+      }),
   );
 });
