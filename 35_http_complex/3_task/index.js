@@ -11,23 +11,18 @@ buttonElem.addEventListener('click', () => {
   repoListElem.innerHTML = '';
 
   fetch(`https://api.github.com/users/${inputElem.value}`).then(response =>
-    response
-      .json()
+    response.json()
       .then(data => {
         const { avatar_url, name, location, repos_url } = data;
-
+        
         avatarElem.src = avatar_url;
         userNameElem.textContent = name;
         userLocationElem.textContent = location ? `from ${location}` : '';
 
         fetch(repos_url).then(response =>
-          response
-            .json()
+          response.json()
             .then(repos => {
-              repos.map(
-                ({ name }) =>
-                  (repoListElem.innerHTML += `<li class="repo-list__item">${name}</li>`),
-              );
+              repos.map(({ name }) => repoListElem.innerHTML += `<li class="repo-list__item">${name}</li>`);
               spinnerElem.classList.add('spinner_hidden');
               inputElem.value = '';
             })
