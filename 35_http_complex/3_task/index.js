@@ -6,6 +6,8 @@ const inputElem = document.querySelector('.name-form__input');
 const repoListElem = document.querySelector('.repo-list');
 const spinnerElem = document.querySelector('.spinner');
 
+avatarElem.src = 'https://avatars3.githubusercontent.com/u10001';
+
 buttonElem.addEventListener('click', () => {
   spinnerElem.classList.remove('spinner_hidden');
   repoListElem.innerHTML = '';
